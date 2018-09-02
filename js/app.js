@@ -1,3 +1,6 @@
-$('#my-elem').click(function(e) {
-    //the element has been clicked... do stuff here
-  });
+var button = document.getElementById("button"),
+  count = 0;
+button.onclick = function() {
+  count += 1;
+  button.innerHTML = "Cat Clicked: " + count;
+};
