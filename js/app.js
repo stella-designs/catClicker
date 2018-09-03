@@ -13,5 +13,5 @@ var button2 = document.getElementById("button2"),
   count = 0;
 button2.onclick = function() {
   count += 1;
-  button2.innerHTML = cat1 + "Cat Clicked: " + count;
+  button2.innerHTML = cat2 + "Cat Clicked: " + count;
 };
