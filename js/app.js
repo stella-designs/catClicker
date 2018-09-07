@@ -1,7 +1,35 @@
-var cats = ["Zen Cat", "Yarn Cat", "Bench Cat", "Feathers Cat", "Book Cat"];
-var catImgs = ['<a href="#"><img src="img/zenCat.jpg" style="width:512px;height:341px;/></a>',
-'<a href="#"><img src="img/yarnCat.jpg" style="width:512px;height:341px;/></a>', '<a href="#"><img src="img/benchCat.jpg" style="width:512px;height:341px;/></a>',
-'<a href="#"><img src="img/feathersCat.jpg" style="width:500px;height:333px;/></a>', '<a href="#"><img src="img/bookCat.jpg"/></a>']
+/* Model */
+var model = {
+  currentCat: null,
+  cats: [
+    {
+      clickCount: 0,
+      name: "Zen Cat",
+      imgSrc: "img/zenCat.jpg"
+    }, 
+    {
+      clickCount: 0,
+      name: "Yarn Cat",
+      imgSrc: "img/yarnCat.jpg"
+    }, 
+    {
+      clickCount: 0,
+      name: "Bench Cat",
+      imgSrc: "img/benchCat.jpg"
+    }, 
+    {
+      clickCount: 0,
+      name: "Feathers Cat",
+      imgSrc: "img/feathersCat.jpg"
+    }, 
+    {
+      clickCount: 0,
+      name: "Book Cat",
+      imgSrc: "img/bookCat.jpg"
+    }
+  ]
+};
+
 var text = "<ul>";
 cats.forEach(catList);
 
@@ -15,5 +43,5 @@ var button = document.getElementById("button"),
   count = 0;
 button.onclick = function() {
   count += 1;
-  button.innerHTML = catImgs + "Cat Clicked: " + count;
+  button.innerHTML = model + "Cat Clicked: " + count;
 };
