@@ -124,18 +124,3 @@ var catListView = {
 
 octopus.init();
 
-var text = "<ul>";
-model.forEach(catList);
-
-function catList(value) {
-  text += "<li>" + value + "</li>";
-}
-
-document.getElementById("demo").innerHTML = text;
-
-var button = document.getElementById("button"),
-  count = 0;
-button.onclick = function() {
-  count += 1;
-  button.innerHTML = model + "Cat Clicked: " + count;
-};
