@@ -30,8 +30,41 @@ var model = {
   ]
 };
 
+/* Octopus= connects model and view */
+
+var octopus = {
+
+  init: function(){
+    //sets current cat to the first one on the list
+    model.currentCat = model.cats[0];
+
+    //tell view to initialize
+    catListView.init();
+    catView.init();
+  },
+
+  getCurrentCat: function() {
+    return model.currentCat;
+  },
+
+  getCats: function() {
+    return model.cats;
+  },
+
+  //set selected cat to object passed in
+  setCurrentCat: function(cat) {
+    model.currentCat = cat;
+  },
+
+  //increments counter
+  incrementCounter: function() {
+    model.currentCat.clickCount++;
+    catView.render();
+  }
+};
+
 var text = "<ul>";
-cats.forEach(catList);
+model.forEach(catList);
 
 function catList(value) {
   text += "<li>" + value + "</li>";
