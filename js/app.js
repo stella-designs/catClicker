@@ -94,6 +94,14 @@ var catView = {
 var catListView = {
 
   init: function() {
+    // store DOM
+    this.catListElem = document.getElementById('cat-list');
+
+    //render view
+    this.render();
+  },
+
+  render: function() {
     var cat, elem, i;
     var cats = octopus.getCats();
 
