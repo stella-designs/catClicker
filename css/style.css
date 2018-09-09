@@ -33,7 +33,7 @@ body {
     color: lightblue;
   }
 
-button {
+#cat {
     padding: 20px;
     background: transparent;
     text-shadow: 1px 1px 1px #202020;
