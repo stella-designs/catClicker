@@ -131,17 +131,6 @@ var catListView = {
 }; 
 
 var admin = {
-  init:function makeEditable(div) {
-    div.style.border = "1px solid #000";
-    div.style.padding = "20px";
-    div.contentEditable = true;
-  },
-
-  render: function makereadOnly(div) {
-    div.style.border = "none";
-    div.style.padding = "0px";
-    div.contentEditable = false;
-  }
 }
 
 octopus.init();
