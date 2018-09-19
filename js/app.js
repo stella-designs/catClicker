@@ -1,6 +1,7 @@
 /* Model */
 var model = {
   currentCat: null,
+  adminShow: false,
   cats: [
     {
       clickCount: 0,
@@ -41,6 +42,8 @@ var octopus = {
     //tell view to initialize
     catListView.init();
     catView.init();
+    adminView.init();
+    adminView.hide();
   },
 
   getCurrentCat: function() {
@@ -60,6 +63,35 @@ var octopus = {
   incrementCounter: function() {
     model.currentCat.clickCount++;
     catView.render();
+  },
+
+  //function runs when 'Admin' button is clicked.
+  adminDisplay: function(){
+    if (model.adminShow === false) {
+        model.adminShow = true;
+        //displays the admin input boxes and buttons
+        adminView.show(); 
+    }
+    else if (model.adminShow === true) {
+        model.adminShow = false;
+        // hides the admin input boxes and buttons
+        adminView.hide();
+    }
+  },
+
+  //hides admin display when cancel button is clicked.
+  adminCancel: function(){
+      adminView.hide();
+  },
+    
+  //hides admin display and saves new cat data when save button is clicked.
+  adminSave: function(){
+      model.currentCat.name= adminCatName.value;
+      model.currentCat.imgSrc= adminCatURL.value;
+      model.currentCat.clickCount= adminCatClicks.value;
+      catView.render();
+      catListView.render();
+      adminView.hide();
   }
 };
 
@@ -130,8 +162,51 @@ var catListView = {
   }
 }; 
 
-var admin = {
+var adminView = {
+  init: function(){
+    this.adminCatName = document.getElementById("adminCatName");
+    this.adminCatURL = document.getElementById("adminCatURL");
+    this.adminCatClicks = document.getElementById("adminCatClicks");
+    var admin = document.getElementById("admin");
+    
+    this.adminBtn = document.getElementById("adminBtn");
+    this.adminCancel = document.getElementById("adminCancel");
+    this.adminSave = document.getElementById("adminSave");
+    
+    //admin display
+    this.adminBtn.addEventListener('click', function(){ 
+        octopus.adminDisplay();
+    });
+    
+    //hides the admin display without saving any new cat data
+    this.adminCancel.addEventListener('click', function(){ 
+        octopus.adminCancel();
+    });
+    
+    //hides the admin display and saves new cat data
+    this.adminSave.addEventListener('click', function(){ 
+        octopus.adminSave();
+    });
+    
+    this.render();
+},
+
+  render: function(){
+      //calls current cat
+      var currentCat = octopus.getCurrentCat(); 
+      this.adminCatName.value = currentCat.name;
+      this.adminCatURL.value = currentCat.imgSrc;
+      this.adminCatClicks.value = currentCat.clickCount;
+  },
+
+  show: function(){
+          //shows the admin div on index.html
+          admin.style.display = 'block';
+      },
+    
+  hide: function(){
+      admin.style.display = 'none';
+  }
 }
 
 octopus.init();
-
